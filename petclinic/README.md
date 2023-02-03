@@ -2,7 +2,15 @@
 The wasmCloud Pet Clinic example application is a WebAssembly and wasmCloud-based reimagining of the classic [Spring Boot microservices Pet
 Clinic](https://github.com/spring-petclinic/spring-petclinic-microservices) example.
 
+The purpose of this readme is to help you learn the wasmCloud application runtime. We took great care to describe how we designed the application and how you can extend it. We paid special attention to vocabulary. If you have questions or concerns about any aspect of this application, please discuss it here...
+
 ## Application Architecture
+The wasmCloud Pet Clinic application has a simple architecture: start all five of the actors,
+push a link definition between the **Clinic API** actor and an **HTTP Server** capability provider,
+and then push link definitions between the Customers, Vets, and Visits actors and a relational
+database. Lastly, ensure that both the HTTP Server and relational database capability providers are
+started.
+
 The wasmCloud Pet Clinic consists of the following five [actors](./actors):
 * [Clinic API](./actors/clinicapi/README.md) - The main JSON (aka "REST") API gateway for
   interacting with the service
@@ -14,12 +22,13 @@ The wasmCloud Pet Clinic consists of the following five [actors](./actors):
   service.
 * [UI](./actors/ui/README.md) - An actor that contains all assets for the petclinic UI. This actor
   will serve the assets through the Clinic API
+  
+And the following two capabilities:
+* Http Server - Provides functionality needed to interact with the outside world via http/https
+* Postgres - Provides functionality needed to CRUD records in a PostgreSQL database
 
-The wasmCloud Pet Clinic application has a simple architecture: simply start all five of the actors,
-push a link definition between the **Clinic API** actor and an **HTTP Server** capability provider,
-and then push link definitions between the Customers, Vets, and Visits actors and a relational
-database. Lastly, ensure that both the HTTP Server and relational database capability providers are
-started.
+## Inspecting the Code
+
 
 ## Running the Petclinic
 
